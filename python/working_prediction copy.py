@@ -34,116 +34,116 @@ dataset.describe().T.style.background_gradient(axis=0)
 # dataset.isna().sum()
 
 
-# age_range = f"Age Range: {dataset['age'].min()} - {dataset['age'].max()}"
-# print(age_range)
-# print("\n")
+age_range = f"Age Range: {dataset['age'].min()} - {dataset['age'].max()}"
+print(age_range)
+print("\n")
 
-# gender_count = dataset['gender'].value_counts()
-# print("Gender Count(female -> 0 , male -> 1):")
-# print(gender_count)
-# print("\n")
+gender_count = dataset['gender'].value_counts()
+print("Gender Count(female -> 0 , male -> 1):")
+print(gender_count)
+print("\n")
 
-# chest_pain_counts = dataset['chestpain'].value_counts()
-# print("Chest Paint Counts (0 -> Typical Angina, 1 -> Atypical Angina, 2 -> Non-Anginal Pain, 3 -> Asymptomatic):")
-# print(chest_pain_counts)
+chest_pain_counts = dataset['chestpain'].value_counts()
+print("Chest Paint Counts (0 -> Typical Angina, 1 -> Atypical Angina, 2 -> Non-Anginal Pain, 3 -> Asymptomatic):")
+print(chest_pain_counts)
 
 
-# percentage_high_fasting_sugar = (dataset['fastingbloodsugar'].sum() / len(dataset)) * 100
-# print(f"Percentage of patients with fasting blood sugar > 120 mg/dl: {percentage_high_fasting_sugar:.2f}%")
+percentage_high_fasting_sugar = (dataset['fastingbloodsugar'].sum() / len(dataset)) * 100
+print(f"Percentage of patients with fasting blood sugar > 120 mg/dl: {percentage_high_fasting_sugar:.2f}%")
 
-# average_max_heart_rate = dataset['maxheartrate'].mean()
-# print(f"Average Maximum Heart Rate: {average_max_heart_rate:.2f}")
+average_max_heart_rate = dataset['maxheartrate'].mean()
+print(f"Average Maximum Heart Rate: {average_max_heart_rate:.2f}")
 
-# average_resting_blood_pressure = dataset['restingBP'].mean()
-# print(f"Average Blood Pressure (Resting) : {average_resting_blood_pressure:.2f} mm Hg")
+average_resting_blood_pressure = dataset['restingBP'].mean()
+print(f"Average Blood Pressure (Resting) : {average_resting_blood_pressure:.2f} mm Hg")
 
-# average_oldpeak = dataset['oldpeak'].mean()
-# print(f"Average Oldpeak: {average_oldpeak:.2f}")
+average_oldpeak = dataset['oldpeak'].mean()
+print(f"Average Oldpeak: {average_oldpeak:.2f}")
 
-# vessels_range = f"No of Major Vessels Range: {dataset['noofmajorvessels'].min()} - {dataset['noofmajorvessels'].max()}"
-# print(vessels_range)
+vessels_range = f"No of Major Vessels Range: {dataset['noofmajorvessels'].min()} - {dataset['noofmajorvessels'].max()}"
+print(vessels_range)
 
-# oldest_patient = dataset.loc[dataset['age'].idxmax()]
-# print(f"Details of the Oldest Patient:\n{oldest_patient}")
+oldest_patient = dataset.loc[dataset['age'].idxmax()]
+print(f"Details of the Oldest Patient:\n{oldest_patient}")
 
-# lowest_bp_patient = dataset.loc[dataset['restingBP'].idxmin()]
-# print(f"Details of the Patient with the Lowest Resting Blood Pressure:\n{lowest_bp_patient}")
+lowest_bp_patient = dataset.loc[dataset['restingBP'].idxmin()]
+print(f"Details of the Patient with the Lowest Resting Blood Pressure:\n{lowest_bp_patient}")
 
 correlation_age_maxheartrate = dataset['age'].corr(dataset['maxheartrate'])
 print(f"Correlation between Age and Maximum Heart Rate: {correlation_age_maxheartrate:.2f}")
 
 
 
-# # Visualization: Heart Rate Max by Chest Pain
-# plot.figure(figsize=(10, 5))
-# sns.barplot(x='chestpain', y='maxheartrate', data=dataset, palette='viridis')
-# plot.title(' Heart Rate Max by Chest Pain')
-# plot.xlabel('Chest Pain Type')
-# plot.ylabel('Max Heart Rate')
-# plot.show()
+# Visualization: Heart Rate Max by Chest Pain
+plot.figure(figsize=(10, 5))
+sns.barplot(x='chestpain', y='maxheartrate', data=dataset, palette='viridis')
+plot.title(' Heart Rate Max by Chest Pain')
+plot.xlabel('Chest Pain Type')
+plot.ylabel('Max Heart Rate')
+plot.show()
 
 
-# # Visualization: Heart Disease Presence by Chest Pain Type
-# plot.figure(figsize=(10, 5))
-# sns.countplot(x='chestpain', hue='target', data=dataset, palette='Set1')
-# plot.title('Heart Disease Presence by Chest Pain Type')
-# plot.xlabel('Chest Pain Type')
-# plot.ylabel('Count')
-# plot.legend(title='Heart Disease', labels=['No', 'Yes'])
-# plot.show()
+# Visualization: Heart Disease Presence by Chest Pain Type
+plot.figure(figsize=(10, 5))
+sns.countplot(x='chestpain', hue='target', data=dataset, palette='Set1')
+plot.title('Heart Disease Presence by Chest Pain Type')
+plot.xlabel('Chest Pain Type')
+plot.ylabel('Count')
+plot.legend(title='Heart Disease', labels=['No', 'Yes'])
+plot.show()
 
-# # Visualization: Heart Disease Presence by Chest Pain Type
-# plot.figure(figsize=(10, 5))
-# sns.boxplot(x='target', y='serumcholestrol', data=dataset, palette='pastel')
-# plot.title('Serum Cholesterol Distribution by Heart Disease Presence')
-# plot.xlabel('Heart Disease Presence')
-# plot.ylabel('Serum Cholesterol')
-# plot.xticks(ticks=[0, 1], labels=['No Heart Disease', 'Heart Disease'])
-# plot.show()
-
-
-# # Visualization: Heart Rate by Gender and Heart Disease Presence
-# plot.figure(figsize=(10, 5))
-# sns.barplot(x='gender', y='maxheartrate', hue='target', data=dataset, palette='mako')
-# plot.title(' Heart Rate by Gender and Heart Disease Presence')
-# plot.xlabel('Gender')
-# plot.ylabel('Max Heart Rate')
-# plot.legend(title='Heart Disease', labels=['No', 'Yes'])
-# plot.show()
-
-# # Visualization: Age Distribution by Gender
-# plot.figure(figsize=(10, 5))
-# sns.histplot(x='age', hue='gender', data=dataset, palette='muted', multiple='stack', bins=15)
-# plot.title('Age Distribution by Gender')
-# plot.xlabel('Age')
-# plot.ylabel('Count')
-# plot.legend(title='Gender', labels=['Female', 'Male'])
-# plot.show()
-
-# # Visualization: Age vs. Max Heart Rate with Target Labels
-# plot.figure(figsize=(10, 5))
-# sns.scatterplot(x='age', y='maxheartrate', hue='target', data=dataset, palette='coolwarm', s=100)
-# plot.title('Age vs. Max Heart Rate with Target Labels')
-# plot.xlabel('Age')
-# plot.ylabel('Max Heart Rate of Patients')
-# plot.legend(title='Target', loc='upper right', labels=['No Heart Disease', 'Heart Disease'])
-# plot.show()
-
-# # Visualization: Serum Cholesterol Distribution
-# plot.figure(figsize=(10, 5))
-# sns.boxplot(x='serumcholestrol', data=dataset, palette='coolwarm')
-# plot.title('Serum Cholesterol Distribution')
-# plot.xlabel('Serum Cholesterol Distribution')
-# plot.show()
+# Visualization: Heart Disease Presence by Chest Pain Type
+plot.figure(figsize=(10, 5))
+sns.boxplot(x='target', y='serumcholestrol', data=dataset, palette='pastel')
+plot.title('Serum Cholesterol Distribution by Heart Disease Presence')
+plot.xlabel('Heart Disease Presence')
+plot.ylabel('Serum Cholesterol')
+plot.xticks(ticks=[0, 1], labels=['No Heart Disease', 'Heart Disease'])
+plot.show()
 
 
-# # Visualization: Slope Distribution of Peak Exercise ST Segment
-# plot.figure(figsize=(10, 5))
-# sns.countplot(x='slope', data=dataset, palette='viridis')
-# plot.title('Slope Distribution of Peak Exercise ST Segment')
-# plot.xlabel('Slope')
-# plot.ylabel('Count')
-# plot.show()
+# Visualization: Heart Rate by Gender and Heart Disease Presence
+plot.figure(figsize=(10, 5))
+sns.barplot(x='gender', y='maxheartrate', hue='target', data=dataset, palette='mako')
+plot.title(' Heart Rate by Gender and Heart Disease Presence')
+plot.xlabel('Gender')
+plot.ylabel('Max Heart Rate')
+plot.legend(title='Heart Disease', labels=['No', 'Yes'])
+plot.show()
+
+# Visualization: Age Distribution by Gender
+plot.figure(figsize=(10, 5))
+sns.histplot(x='age', hue='gender', data=dataset, palette='muted', multiple='stack', bins=15)
+plot.title('Age Distribution by Gender')
+plot.xlabel('Age')
+plot.ylabel('Count')
+plot.legend(title='Gender', labels=['Female', 'Male'])
+plot.show()
+
+# Visualization: Age vs. Max Heart Rate with Target Labels
+plot.figure(figsize=(10, 5))
+sns.scatterplot(x='age', y='maxheartrate', hue='target', data=dataset, palette='coolwarm', s=100)
+plot.title('Age vs. Max Heart Rate with Target Labels')
+plot.xlabel('Age')
+plot.ylabel('Max Heart Rate of Patients')
+plot.legend(title='Target', loc='upper right', labels=['No Heart Disease', 'Heart Disease'])
+plot.show()
+
+# Visualization: Serum Cholesterol Distribution
+plot.figure(figsize=(10, 5))
+sns.boxplot(x='serumcholestrol', data=dataset, palette='coolwarm')
+plot.title('Serum Cholesterol Distribution')
+plot.xlabel('Serum Cholesterol Distribution')
+plot.show()
+
+
+# Visualization: Slope Distribution of Peak Exercise ST Segment
+plot.figure(figsize=(10, 5))
+sns.countplot(x='slope', data=dataset, palette='viridis')
+plot.title('Slope Distribution of Peak Exercise ST Segment')
+plot.xlabel('Slope')
+plot.ylabel('Count')
+plot.show()
 
 
 # target classes :
