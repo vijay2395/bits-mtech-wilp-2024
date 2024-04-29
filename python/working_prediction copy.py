@@ -24,7 +24,7 @@ warnings.filterwarnings("ignore")
 # display(Image(filename='/Users/vijaykumar/Desktop/PROJECT/final/REPORT/prediction_datasets/Cardiovascular_Disease_Dataset/dataset_description.png'))
 
 #read the dataset
-dataset = pd.read_csv('/Users/vijaykumar/Desktop/PROJECT/final/REPORT/prediction_datasets/Cardiovascular_Disease_Dataset/Cardiovascular_Disease_Dataset.csv')
+dataset = pandas.read_csv('/Users/vijaykumar/Desktop/PROJECT/final/REPORT/prediction_datasets/Cardiovascular_Disease_Dataset/Cardiovascular_Disease_Dataset.csv')
 dataset.head().style.set_properties(**{'background-c olor':'blue','color':'white','border-color':'#8b8c8c'})
 
 #display summary and statistics of dataset
